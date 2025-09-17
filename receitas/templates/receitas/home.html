@@ -11,6 +11,18 @@
             </button>
         </form>
     </section>
+    <nav class="flex justify-center space-x-4 py-4"> 
+    <a href="{% url 'home' %}"  
+       class="text-lg font-semibold px-4 py-2 rounded-full transition-colors {% if not categoria_selecionada %}bg-orange-500 text-white{% else %}bg-gray-200 text-gray-800 hover:bg-gray-300{% endif %}"> Todas 
+    </a> 
+    {% for categoria in categorias %} 
+        <a href="{% url 'home' %}?categoria={{ categoria }}"  
+           class="text-lg font-semibold px-4 py-2 rounded-full transition-colors {% if categoria == categoria_selecionada %}bg-orange-500 text-white{% else %}bg-gray-200 
+text-gray-800 hover:bg-gray-300{% endif %}"> 
+           {{ categoria|capfirst }} 
+        </a> 
+    {% endfor %} 
+</nav>
 
     <h2 class="text-2xl font-semibold mb-6 text-center mt-8">Nossas Últimas Receitas</h2>
     <div class="flex flex-wrap justify-center gap-6">
